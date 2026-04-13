@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链投信息科技有限公司</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #2c3e50;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 18px 30px;
+            cursor: pointer;
+            color: #ecf0f1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent;
+        }
+        
+        .tab:hover {
+            background: #34495e;
+        }
+        
+        .tab.active {
+            background: #34495e;
+            border-bottom: 4px solid #3498db;
+            color: #3498db;
+        }
+        
+        .tab i {
+            margin-right: 10px;
+        }
+        
+        .content-area {
+            padding: 30px;
+            min-height: 500px;
+        }
+        
+        .content {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .content.active {
+            display: block;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        
+        
+        .image-placeholder {
+            height: 250px;
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        /*.image-placeholder {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 8px;
+        }*/
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: #ecf0f1;
+            font-size: 1rem;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: left;
+                padding: 15px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>链投信息科技有限公司</h1>
+            <p class="description">点击下方菜单栏查看不同内容</p>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab active" data-target="home"><i class="fas fa-home"></i> 首页</div>
+            <div class=""></div>
+            <div class="tab" data-target="services"><i class="fas fa-cog"></i> 服务</div>
+            <div class="tab" data-target="products"><i class="fas fa-box"></i> 产品</div>
+            <!--<div class="tab" data-target="gallery"><i class="fas fa-image"></i> 画廊</div>-->
+            <div class="tab" data-target="about"><i class="fas fa-info-circle"></i> 关于我们</div>
+            <div class="tab" data-target="contact"><i class="fas fa-envelope"></i> 联系我们</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- 首页内容 -->
+            <div id="home" class="content active">
+                <h2>欢迎来到徐州链投信息科技有限公司</h2>
+                <p>公司主要经营理念</p>
+                
+            <div class="image-placeholder">
+                 <img src="公司照片.jpg" alt="公司照片">
+            </div>
+                
+                <p>这里可以解释一些公司的理念啥的巴拉巴拉测试一些文案</p>
+                <p>巴拉巴拉测试一些文案</p>
+                
+               <!--<button class="btn">了解更多</button>-->
+               <button class="btn" onclick="window.location.href='about.html'">了解更多</button>
+            </div>
+            
+            <!-- 服务内容 -->
+            <div id="services" class="content">
+                <h2>我们的服务</h2>
+                <p>我们提供各种专业的服务，满足您的不同需求。</p>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <h3>个人使用</h3>
+                        <p>个人使用是什么样子的，有什么样的特点优势</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>工作室使用</h3>
+                        <p>工作室使用是什么样子的，有什么样的特点优势</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>团队使用</h3>
+                        <p>团队使用是什么样子的，有什么样的特点优势</p>
+                        <button class="btn">查看详情</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 产品内容 -->
+            <div id="products" class="content">
+                <h2>我们的产品</h2>
+                <p>探索我们创新的产品系列</p>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <!--<div class="image-placeholder">产品图像</div>-->
+                        <img class="image-placeholder" src="shizibajin.png" alt="产品图像">
+                        <h3>狮子霸金</h3>
+                        <p>狮子霸金是一个什么什么样的产品</p>
+                        <button class="btn" onclick="window.location.href='shizibajin.html'">详情</button>
+                    </div>
+                    
+                    <div class="card">
+                        <!--<div class="image-placeholder">产品图像</div>-->
+                        <img class="image-placeholder" src="shizibajin.png" alt="产品图像">
+                        <h3>射手金航星</h3>
+                        <p>射手金航星是一个什么什么样的产品</p>
+                        <button class="btn">详情</button>
+                    </div>
+                    
+                    <div class="card">
+                        <!--<div class="image-placeholder">产品图像</div>-->
+                        <img class="image-placeholder" src="shizibajin.png" alt="产品图像">
+                        <h3>巨蟹揽金</h3>
+                        <p>巨蟹揽金是一个什么什么样的产品</p>
+                        <button class="btn">详情</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 画廊内容
+            <div id="gallery" class="content">
+                <h2>作品画廊</h2>
+                <p>欣赏我们的一些精选作品和项目案例。</p>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <div class="image-placeholder">项目一</div>
+                        <h3>企业品牌设计</h3>
+                        <p>为科技公司设计的现代品牌形象。</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="image-placeholder">项目二</div>
+                        <h3>电子商务网站</h3>
+                        <p>全功能的在线商店解决方案。</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="image-placeholder">项目三</div>
+                        <h3>移动应用界面</h3>
+                        <p>健康类应用的UI/UX设计。</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="image-placeholder">项目四</div>
+                        <h3>数据分析平台</h3>
+                        <p>可视化数据分析工具。</p>
+                    </div>
+                </div>
+            </div>
+            -->
+            <!-- 关于我们内容 -->
+            <div id="about" class="content">
+                <h2>关于我们</h2>
+                <p>我们是一支充满激情和创造力的团队，致力于为客户提供最好的数字解决方案。</p>
+                
+                <div class="image-placeholder">
+                    <i class="fas fa-users fa-3x"></i>
+                </div>
+                
+                <h3>我们的使命</h3>
+                <p>通过创新和技术，帮助企业和个人实现他们的数字目标，创造卓越的用户体验。</p>
+                
+                <h3>我们的价值观</h3>
+                <p>我们相信质量、创新和客户满意度是成功的关键。我们不断学习并适应最新的技术趋势，以确保我们的客户始终处于行业前沿。</p>
+                
+                <button class="btn">加入我们</button>
+            </div>
+            
+            <!-- 联系我们内容 -->
+            <div id="contact" class="content">
+                <h2>联系我们</h2>
+                <p>我们很乐意听取您的意见并回答任何问题。请通过以下方式与我们联系。</p>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <h3><i class="fas fa-map-marker-alt"></i> 地址</h3>
+                        <p>徐州xxxxxxxx</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-phone"></i> 电话</h3>
+                        <p>+86 10 1234 5678</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-envelope"></i> 邮箱</h3>
+                        <p>info@example.com</p>
+                    </div>
+                </div>
+                
+                <!--
+                <h3>发送消息</h3>
+                <p>填写以下表单，我们会尽快回复您。</p>    
+                
+                
+                <form style="margin-top: 20px;">
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" placeholder="您的姓名" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="email" placeholder您的邮箱" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <textarea placeholder="您的消息" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; height: 150px;"></textarea>
+                    </div>
+                    <button type="submit" class="btn">发送消息</button>
+                </form>
+                -->
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 版权归徐州链投信息科技有限公司，所有权利保留.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有标签页和内容区域
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+            
+            // 为每个标签页添加点击事件
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-target');
+                    
+                    // 移除所有标签页和内容区域的active类
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // 为当前点击的标签页和对应的内容区域添加active类
+                    tab.classList.add('active');
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
